@@ -1,0 +1,49 @@
+-- COMMIT --
+
+// COMMIT command in SQL is used to save all the transaction-related changes permanently to the disk. 
+// Whenever DDL commands such as INSERT, UPDATE and DELETE are used, the changes made by these commands are permanent only after closing the current session. 
+// So before closing the session, one can easily roll back the changes made by the DDL commands. 
+// Hence, if we want the changes to be saved permanently to the disk without closing the session, we will use the commit command.
+
+// To create a table named t_school
+CREATE TABLE t_school(ID INT, School_Name VARCHAR(40), Number_Of_Students INT, Number_Of_Teachers INT, Number_Of_Classrooms INT, EmailID VARCHAR(40));  
+
+// BEGIN / START TRANSACTION command is used to start the transaction
+START TRANSACTION;
+
+// To insert multiple records at the same time in the t_school table
+INSERT INTO t_school(ID, School_Name, Number_Of_Students, Number_Of_Teachers, Number_Of_Classrooms, EmailID) VALUES(1, "Boys Town Public School", 1000, 80, 12, "btps15@gmail.com"), (2, "Guru Govind Singh Public School", 800, 35, 15, "ggps25@gmail.com"), (3, "Delhi Public School", 1200, 30, 10, "dps101@gmail.com"), (4, "Ashoka Universal School", 1110, 40, 40, "aus17@gmail.com"), (5, "Calibers English Medium School", 9000, 31, 50, "cems@gmail.com");  
+
+// To verify the execution of the INSERT INTO query executed above
+SELECT * FROM t_school;
+
+// To save the results of the operations carried on the t_school table
+COMMIT;
+
+-- SAVEPOINT --
+// We can divide the database operations into parts. 
+// For example, we can consider all the insert related queries that we will execute consecutively as one part of the transaction and the delete command as the other part of the transaction. 
+// Using the SAVEPOINT command in SQL, we can save these different parts of the same transaction using different names. 
+
+// For example, we can save all the insert related queries with the savepoint named INS. 
+// To save all the insert related queries in one savepoint, we have to execute the SAVEPOINT query followed by the savepoint name after finishing the insert command execution.
+SAVEPOINT savepoint_name;
+
+-- ROLLBACK --
+// While carrying a transaction, we must create savepoints to save different parts of the transaction. 
+// According to the user's changing requirements, he/she can roll back the transaction to different savepoints. 
+
+// Consider a scenario: We have initiated a transaction followed by the table creation and record insertion into the table. 
+// After inserting records, we have created a savepoint INS. 
+// Then we executed a delete query, but later we thought that mistakenly we had removed the useful record. 
+// Therefore in such situations, we have an option of rolling back our transaction. 
+// In this case, we have to roll back our transaction using the ROLLBACK command to the savepoint INS, which we have created before executing the DELETE query.
+ROLLBACK TO savepoint_name;  
+
+// START TRANSACTION;
+// SAVEPOINT Insertion;  
+// UPDATE t_school SET Number_Of_Students = 9050 WHERE ID = 5;  
+// SAVEPOINT Updation;  
+// SELECT *FROM t_school;  
+// ROLLBACK TO Insertion;  
+// SELECT *FROM t_school;

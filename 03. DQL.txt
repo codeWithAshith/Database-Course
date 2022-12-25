@@ -1,0 +1,53 @@
+// To fetch the data from the database
+SELECT expressions    
+FROM TABLES    
+WHERE conditions;  
+
+// To all records from the Fruit table
+SELECT * FROM Fruit;
+
+// To selects the FruitId and FruitName columns from the Fruit table
+SELECT FruitId, FruitName 
+FROM Fruit;
+
+// To return all records from the Fruit table where the UnitId column has a value of 1
+SELECT * FROM Fruit
+WHERE UnitId = 1;
+
+// To select data that is greater than a given value
+SELECT * FROM Fruit
+WHERE Inventory > 10;
+
+// To select data that is less than a given value
+SELECT * FROM Fruit
+WHERE Inventory < 10;
+
+// To select data that is both less than and greater than a given value
+SELECT * FROM Fruit
+WHERE Inventory <> 10;
+
+// To select data that is greater than or equal to a given value
+SELECT * FROM Fruit
+WHERE Inventory >= 10;
+
+// To select data that is less than or equal to a given value
+SELECT * FROM Fruit
+WHERE Inventory <= 10;
+
+//To limit your selection to only those records that meet two conditions (or more if you include more AND operators)
+SELECT * FROM Fruit
+WHERE Inventory > 10 
+AND DateEntered > '2015-01-15';
+
+// To broaden your selection to more than one criteria
+SELECT * FROM Fruit
+WHERE UnitId = 1 OR UnitId = 2;
+
+// To select data that is between two given value
+SELECT * FROM Fruit
+WHERE DateEntered 
+BETWEEN '2015-01-25' AND '2015-02-25';
+
+// To select data that is not equivalent to a given condition
+SELECT * FROM Fruit
+WHERE NOT (FruitName = 'Apple');

@@ -1,0 +1,148 @@
+A relational database consists of multiple related tables linking together using common columns, which are known as foreign key columns. 
+Because of this, data in each table is incomplete from the business perspective.
+
+That’s why joins come into the play.
+
+A join is a method of linking data between one (self-join) or more tables based on values of the common column between the tables.
+
+MySQL supports the following types of joins:
+
+1. Inner join
+2. Left join
+3. Right join
+4. Cross join
+
+To join tables, you use the cross join, inner join, left join, or right join clause. 
+The join clause is used in the SELECT statement appeared after the FROM clause.
+
+Setting up sample tables
+
+CREATE TABLE members (
+    member_id INT AUTO_INCREMENT,
+    name VARCHAR(100),
+    PRIMARY KEY (member_id)
+);
+
+CREATE TABLE committees (
+    committee_id INT AUTO_INCREMENT,
+    name VARCHAR(100),
+    PRIMARY KEY (committee_id)
+);
+
+INSERT INTO members(name)
+VALUES('John'),('Jane'),('Mary'),('David'),('Amelia');
+
+INSERT INTO committees(name)
+VALUES('John'),('Mary'),('Amelia'),('Joe');
+
+--INNER JOIN
+
+The inner join clause joins two tables based on a condition which is known as a join predicate.
+
+The inner join clause compares each row from the first table with every row from the second table.
+
+If values from both rows satisfy the join condition, 
+the inner join clause creates a new row whose column contains all columns of the two rows from both tables and 
+includes this new row in the result set. 
+In other words, the inner join clause includes only matching rows from both tables.
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+INNER JOIN committees c ON c.name = m.name;
+
+--LEFT JOIN 
+
+The left join selects data starting from the left table. 
+For each row in the left table, the left join compares with every row in the right table.
+
+If the values in the two rows satisfy the join condition, 
+the left join clause creates a new row whose columns contain all columns of the rows in both tables and includes this row in the result set.
+
+If the values in the two rows are not matched, 
+the left join clause still creates a new row whose columns contain columns of the row in the left table and NULL for columns of the row in the right table.
+
+In other words, the left join selects all data from the left table whether there are matching rows exist in the right table or not.
+
+In case there are no matching rows from the right table found, 
+the left join uses NULLs for columns of the row from the right table in the result set.
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+LEFT JOIN committees c USING(name);
+
+--RIGHT JOIN 
+
+The right join clause is similar to the left join clause except that the treatment of left and right tables is reversed. 
+The right join starts selecting data from the right table instead of the left table.
+
+The right join clause selects all rows from the right table and matches rows in the left table. 
+If a row from the right table does not have matching rows from the left table, the column of the left table will have NULL in the final result set
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+RIGHT JOIN committees c on c.name = m.name;
+
+--CROSS JOIN
+
+The cross join makes a Cartesian product of rows from the joined tables. 
+The cross join combines each row from the first table with every row from the right table to make the result set.
+
+Suppose the first table has n rows and the second table has m rows. The cross join that joins the tables will return nxm rows.
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+CROSS JOIN committees c;
+
+--Subquery
+
+A MySQL subquery is a query nested within another query such as SELECT, INSERT, UPDATE or DELETE. Also, a subquery can be nested within another subquery.
+
+A MySQL subquery is called an inner query while the query that contains the subquery is called an outer query. 
+A subquery can be used anywhere that expression is used and must be closed in parentheses.
+
+SELECT 
+    lastName, firstName
+FROM
+    employees
+WHERE
+    officeCode IN (SELECT 
+            officeCode
+        FROM
+            offices
+        WHERE
+            country = 'USA');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
