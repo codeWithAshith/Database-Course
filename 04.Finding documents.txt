@@ -1,0 +1,11 @@
+# To fetch all books from book collection
+db.books.find()
+
+# To fetch with condition
+db.books.find({title: 'Colors 1'})
+
+# To view only selected fields
+db.books.find({},{title:1, author:1})
+
+# To find one book with id
+db.books.findOne({_id: ObjectId("63b29dea1f6ebbdf70307001")})

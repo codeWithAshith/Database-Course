@@ -1,0 +1,16 @@
+# To insert a collection with a nested document
+# The same can be done with "insertMany"
+
+db.books.insert(
+    {
+        title:"ABC", 
+        author:"Codewithashith", 
+        pages:300, 
+        rating:7, 
+        genres:["fantasy","magic"],
+        reviews:[
+            {name:"Yash", comment:"Great Book"}, 
+            {name:"maria", comment:"Awesome book"}
+        ]
+    }
+)

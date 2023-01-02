@@ -1,0 +1,5 @@
+Mac 
+
+- brew install mongosh
+- mongosh "mongodb+srv://cluster0.bypwb3z.mongodb.net/myFirstDatabase" --apiVersion 1 --username root
+

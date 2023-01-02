@@ -1,0 +1,15 @@
+# Method chaining
+
+# count the number of documents returned
+db.books.find({}).count()
+
+# limit the number of results returned
+db.books.find({}).limit(1)
+
+# sort the results
+# 1 ascending order
+# -1 descending order
+db.books.find({}).sort({title: -1})
+
+# sort and limit 
+db.books.find({}).sort({title: -1}).limit(2)

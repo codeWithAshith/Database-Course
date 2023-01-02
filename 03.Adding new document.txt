@@ -1,0 +1,44 @@
+# To create collection in a selected db
+db.books
+
+# Insert data into document
+
+db.books.insert(
+    {
+        title:"Colors", 
+        author:"codewithashith",
+        pages:300, 
+        rating:7, 
+        genres:["fantasy","magic"]
+    }
+)
+
+# We can even insert data into a collection directly without creating collection
+
+db.authors.insert(
+    {
+        name:"codewithashith",
+        age:30
+    }
+)
+
+# Insert many documents into a collection
+
+db.books.insertMany(
+   [
+     {
+        title:"Colors 1", 
+        author:"codewithashith",
+        pages:300, 
+        rating:7, 
+        genres:["fantasy","magic"]
+    },
+     {
+        title:"Colors 2", 
+        author:"codewithashith",
+        pages:300, 
+        rating:7, 
+        genres:["fantasy","magic"]
+    }
+   ]
+)

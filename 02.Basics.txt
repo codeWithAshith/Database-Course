@@ -1,0 +1,15 @@
+# To list all the databases
+show dbs
+
+# To select a database
+use <databaseName>
+
+# To see current selected db
+db
+
+# To see collections
+show collections
+
+# We can also create new db with use command,
+# use creates db if the db doesnot exist
+use bookstore
