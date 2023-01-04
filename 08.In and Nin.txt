@@ -1,0 +1,5 @@
+# To find values in 
+db.books.find({rating: {$in: [ 7, 8, 9 ]}})
+
+# To find values not in
+db.books.find({rating: {$nin: [ 7, 8, 9 ]}})

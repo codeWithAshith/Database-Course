@@ -1,0 +1,5 @@
+# To delete a document
+db.books.deleteOne({_id: ObjectId("63b2a50c1f6ebbdf70307003")})
+
+#To delete many documents
+db.books.deleteMany({author:"codewithashith"})

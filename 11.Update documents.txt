@@ -1,0 +1,30 @@
+# To update one document
+db.books.updateOne({_id: ObjectId("63b2a50c1f6ebbdf70307003")}, {$set:{
+     title: 'Updated Book Title',
+    author: 'code with ashith',
+}})
+
+# To update many document
+db.books.updateMany({author:"codewithashith"}, {$set:{
+    author: 'code with ashith',
+}})
+
+# To increment a object with a value
+db.books.updateOne({_id: ObjectId("63b2a50c1f6ebbdf70307003")}, {$inc:{
+    pages: 3,
+}})
+
+# To decrement a object with a value
+db.books.updateOne({_id: ObjectId("63b2a50c1f6ebbdf70307003")}, {$inc:{
+    pages: -3,
+}})
+
+# To remove one value from an nested array
+db.books.updateOne({_id: ObjectId("63b2a50c1f6ebbdf70307003")}, {$pull:{
+    genres: "fantasy",
+}})
+
+# To add one value from an nested array
+db.books.updateOne({_id: ObjectId("63b2a50c1f6ebbdf70307003")}, {$pull:{
+    genres: "magic",
+}})

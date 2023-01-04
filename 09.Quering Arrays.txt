@@ -1,0 +1,9 @@
+# To find exact match from array where we only have "fantasy"
+db.books.find({ genres: ["fantasy"]})
+db.books.find({ genres: ["fantasy", "magic"]})
+
+# To find exact match from array where we have "fantasy"
+db.books.find({ genres: "fantasy"})
+
+# To find match from array where we have both "fantasy" and "scifi"
+db.books.find({genres: {$all: ["fantasy", "scifi"]}})

@@ -1,0 +1,15 @@
+# To find all books with rating greater than 6
+db.books.find({rating: {$gt: 6 }})
+
+# To find all books with rating less than 8
+db.books.find({rating: {$lt: 8 }})
+
+# To find all books with rating less than or equal to 8
+db.books.find({rating: {$lte: 8 }})
+
+# To use multiple queries
+db.books.find({rating: {$lte: 8}, title: "Colors 2"})
+
+# Or operator
+db.books.find({$or: [{rating:7}, {rating:9}]})
+db.books.find({$or: [{rating:7}, {pages: {$gte: 300 }}]})
