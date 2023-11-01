@@ -45,3 +45,6 @@ USE FruitShop;
 
 // To rename table name
 RENAME TABLE `group` TO `member`;
+
+// alter and add auto increment
+ALTER TABLE document MODIFY COLUMN document_id INT auto_increment
