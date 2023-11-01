@@ -35,7 +35,13 @@ DROP COLUMN Email;
 ALTER TABLE Fruit
 MODIFY COLUMN DateEntered year;
 
-// To create database and table
+// To rename column 
+ALTER TABLE table_name RENAME COLUMN old_col_name TO new_col_name;
+
+// To create a database and table
 DROP DATABASE IF EXISTS FruitShop;
 CREATE DATABASE FruitShop;
 USE FruitShop;
+
+// To rename table name
+RENAME TABLE `group` TO `member`;
